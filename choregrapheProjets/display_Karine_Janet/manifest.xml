@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<<<<<<< HEAD
+<package version="0.0.0" uuid="display_karine_janet-774df9">
+=======
+<package version="0.0.0" uuid="display_karine_janet-c3c952">
+>>>>>>> 642c661da4857fbae84b062864d6df3159b81e99
+ <names>
+  <name lang="en_US">Untitled</name>
+ </names>
+ <supportedLanguages>
+  <language>en_US</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>en_US</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="behavior_1">
+   <userRequestable/>
+   <nature>interactive</nature>
+<<<<<<< HEAD
+   <triggerSentences/>
+   <loadingResponses/>
+   <autonomous/>
+=======
+>>>>>>> 642c661da4857fbae84b062864d6df3159b81e99
+   <permissions/>
+  </behaviorContent>
+ </contents>
+</package>
