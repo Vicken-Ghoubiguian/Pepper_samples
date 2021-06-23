@@ -6,8 +6,8 @@
     </BehaviorDescriptions>
     <Dialogs />
     <Resources>
-        <File name="image_pour_le_robot_Pepper" src="html/images/image_pour_le_robot_Pepper.jpg" />
         <File name="icon" src="icon.png" />
+        <File name="image_pour_le_robot_Pepper" src="html/images/image_pour_le_robot_Pepper.png" />
     </Resources>
     <Topics />
     <IgnoredPaths />
