@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package uuid="encourage_karine_janet-fec1e0" version="0.0.0">
+ <names>
+  <name lang="en_US">Encourage_Karine_Janet</name>
+ </names>
+ <descriptions>
+  <description lang="en_US">This is a simple application for the Softbank robotics' robot Pepper developed with Choregraphe more complex than the first...</description>
+ </descriptions>
+ <supportedLanguages>
+  <language>en_US</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>en_US</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="behavior_1">
+   <userRequestable/>
+   <nature>interactive</nature>
+   <triggerSentences/>
+   <loadingResponses/>
+   <autonomous/>
+   <permissions/>
+  </behaviorContent>
+ </contents>
+</package>
