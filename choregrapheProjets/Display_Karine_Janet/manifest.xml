@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package version="0.0.0" uuid="display_karine_janet-f38056">
+<package uuid="display_karine_janet-f38056" version="0.0.0">
  <names>
   <name lang="en_US">Display Karine Janet</name>
  </names>
@@ -8,9 +8,15 @@
  </descriptions>
  <supportedLanguages>
   <language>en_US</language>
+  <language>fr_FR</language>
+  <language>ja_JP</language>
  </supportedLanguages>
  <descriptionLanguages>
   <language>en_US</language>
+  <language>fr_FR</language>
+  <language>ja_JP</language>
+  <language>zh_TW</language>
+  <language>zh_CN</language>
  </descriptionLanguages>
  <contents>
   <behaviorContent path="behavior_1">
