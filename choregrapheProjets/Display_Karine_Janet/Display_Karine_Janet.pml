@@ -8,6 +8,10 @@
     <Resources>
         <File name="icon" src="icon.png" />
         <File name="image_pour_le_robot_Pepper" src="html/images/image_pour_le_robot_Pepper.png" />
+        <File name=".manifest.xml.8168" src=".manifest.xml.8168.csp" />
+        <File name=".translation_en_US.ts.8168" src="translations/.translation_en_US.ts.8168.csp" />
+        <File name=".translation_fr_FR.ts.8168" src="translations/.translation_fr_FR.ts.8168.csp" />
+        <File name=".translation_ja_JP.ts.8168" src="translations/.translation_ja_JP.ts.8168.csp" />
     </Resources>
     <Topics />
     <IgnoredPaths />
