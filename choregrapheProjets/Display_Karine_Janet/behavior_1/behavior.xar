@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?><ChoregrapheProject xmlns="http://www.aldebaran-robotics.com/schema/choregraphe/project.xsd" xar_version="3"><Box name="root" id="-1" localization="8" tooltip="Root box of Choregraphe&apos;s behavior. Highest level possible." x="0" y="0"><bitmap>media/images/box/root.png</bitmap><script language="4"><content><![CDATA[]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" /><Timeline enable="0"><BehaviorLayer name="behavior_layer1"><BehaviorKeyframe name="keyframe1" index="1"><Diagram><Box name="Show Image" id="13" localization="8" tooltip="display an image on the screen&#x0A;&#x0A;V1.0.0&#x0A;" x="383" y="102"><bitmap>media/images/box/interaction/rec_movie.png</bitmap><script language="4"><content><![CDATA[
+<?xml version="1.0" encoding="UTF-8" ?><ChoregrapheProject xmlns="http://www.aldebaran-robotics.com/schema/choregraphe/project.xsd" xar_version="3"><Box name="root" id="-1" localization="8" tooltip="Root box of Choregraphe&apos;s behavior. Highest level possible." x="0" y="0"><bitmap>media/images/box/root.png</bitmap><script language="4"><content><![CDATA[]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" /><Timeline enable="0"><BehaviorLayer name="behavior_layer1"><BehaviorKeyframe name="keyframe1" index="1"><Diagram><Box name="Show Image" id="13" localization="8" tooltip="display an image on the screen&#x0A;&#x0A;V1.0.0&#x0A;" x="787" y="290"><bitmap>media/images/box/interaction/rec_movie.png</bitmap><script language="4"><content><![CDATA[
 
 class MyClass(GeneratedClass):
 
@@ -74,4 +74,62 @@ class MyClass(GeneratedClass):
 
     def onInput_onStop(self):
         self.onUnload()
-        self.onStopped()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Input name="onHideImage" type="1" type_size="1" nature="1" inner="0" tooltip="Hide the image when a signal is received on this input." id="4" /><Input name="onPreLoadImage" type="1" type_size="1" nature="1" inner="0" tooltip="Preload the image when a signal is received on this input." id="5" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="6" /><Parameter name="ImageUrl" inherits_from_parent="0" content_type="3" value="/images/image_pour_le_robot_Pepper.png" default_value="" custom_choice="0" tooltip='path of the image inside the &quot;html&quot; folder (e.g. &quot;/images/myimage.png&quot;' id="7" /></Box><Link inputowner="13" indexofinput="2" outputowner="0" indexofoutput="2" /><Link inputowner="0" indexofinput="4" outputowner="13" indexofoutput="6" /></Diagram></BehaviorKeyframe></BehaviorLayer></Timeline></Box></ChoregrapheProject>
+        self.onStopped()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Input name="onHideImage" type="1" type_size="1" nature="1" inner="0" tooltip="Hide the image when a signal is received on this input." id="4" /><Input name="onPreLoadImage" type="1" type_size="1" nature="1" inner="0" tooltip="Preload the image when a signal is received on this input." id="5" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="6" /><Parameter name="ImageUrl" inherits_from_parent="0" content_type="3" value="/images/image_pour_le_robot_Pepper.png" default_value="" custom_choice="0" tooltip='path of the image inside the &quot;html&quot; folder (e.g. &quot;/images/myimage.png&quot;' id="7" /></Box><Box name="Tablet Touch" id="10" localization="8" tooltip="Sends an event when the tablet is touched&#x0A;&#x0A;V1.0.1&#x0A;" x="786" y="100"><bitmap>media/images/box/sensors/STM.png</bitmap><script language="4"><content><![CDATA[
+
+class MyClass(GeneratedClass):
+
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        self.isRunning = False
+        self.tabletService = None
+        self.connectId = None
+
+    def onUnload(self):
+        if self.tabletService:
+            self.disconnectListener()
+            self.isRunning = False
+
+    def disconnectListener(self):
+        if self.connectId:
+            try:
+                self.tabletService.onTouch.disconnect(self.connectId)
+                self.connectId = None
+            except Exception as e:
+                self.logger.error(e)
+
+    def _getTabletService(self):
+        tabletService = None
+        try:
+            tabletService = self.session().service("ALTabletService")
+        except Exception as e:
+            self.logger.error(e)
+        return tabletService
+
+    def  onInput_onStart(self):
+        if self.isRunning:
+            return # already running, nothing to do
+        self.isRunning = True
+        # We create TabletService here in order to avoid
+        # problems with connections and disconnections of the tablet during the life of the application
+        self.tabletService = self._getTabletService()
+        if self.tabletService:
+            try:
+                if not self.connectId:
+                    if self.getParameter("Action") == "On touch move":
+                        self.connectId = self.tabletService.onTouchMove.connect(self.touchCallback)
+                    elif self.getParameter("Action") == "On touch down":
+                        self.connectId = self.tabletService.onTouchDown.connect(self.touchCallback)
+                    elif self.getParameter("Action") == "On touch up":
+                        self.connectId = self.tabletService.onTouchUp.connect(self.touchCallback)
+            except Exception as err:
+                self.logger.warning("Error during subscribe: %s " % err)
+        else:
+            self.logger.info("No ALTabletService, can't play listen for touch.")
+
+    def touchCallback(self, x, y):
+        self.onTouched([x, y])
+
+    def onInput_onStop(self):
+        self.onUnload()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Output name="onTouched" type="0" type_size="1" nature="2" inner="0" tooltip="Send [x,y] position for one touch" id="4" /><Parameter name="Action" inherits_from_parent="0" content_type="3" value="On touch move" default_value="On touch move" custom_choice="0" tooltip="Type of touch you want on the tablet." id="5"><Choice value="On touch move" /><Choice value="On touch down" /><Choice value="On touch up" /></Parameter></Box><Link inputowner="13" indexofinput="2" outputowner="0" indexofoutput="2" /><Link inputowner="10" indexofinput="2" outputowner="0" indexofoutput="2" /><Link inputowner="13" indexofinput="3" outputowner="10" indexofoutput="4" /><Link inputowner="0" indexofinput="4" outputowner="13" indexofoutput="6" /></Diagram></BehaviorKeyframe></BehaviorLayer></Timeline></Box></ChoregrapheProject>
