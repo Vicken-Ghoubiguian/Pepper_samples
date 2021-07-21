@@ -1,5 +1,7 @@
 # Display_Karine_Janet
 
+This is an application for the Pepper robot (for NAOqi 2.5 precisely) which just display a simple image of Karine Janet.
+
 ## Contents
 
 1. [Introduction](#introduction)
