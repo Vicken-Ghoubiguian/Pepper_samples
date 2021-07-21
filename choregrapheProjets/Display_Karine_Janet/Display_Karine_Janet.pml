@@ -8,6 +8,7 @@
     <Resources>
         <File name="icon" src="icon.png" />
         <File name="image_pour_le_robot_Pepper" src="html/images/image_pour_le_robot_Pepper.png" />
+        <File name="README" src="README.md" />
     </Resources>
     <Topics />
     <IgnoredPaths />
