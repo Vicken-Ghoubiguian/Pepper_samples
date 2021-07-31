@@ -7,9 +7,9 @@ This is a project listing different examples of projects for the development of 
 
 ## Project's structure
 
-## Choregraphe projects
+### Choregraphe projects
 
-## Android studio projects
+### Android studio projects
 
 ## Useful links
 
