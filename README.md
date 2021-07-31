@@ -11,6 +11,6 @@ This is a project listing different examples of projects for the development of 
 
 ### Android studio projects
 
-## Useful links
+## A few useful links
 
 ## Conclusion
