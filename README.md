@@ -5,6 +5,8 @@ This is a project listing different examples of projects for the development of 
 
 ## Introduction
 
+## Project's structure
+
 ## Choregraphe projects
 
 ## Android studio projects
